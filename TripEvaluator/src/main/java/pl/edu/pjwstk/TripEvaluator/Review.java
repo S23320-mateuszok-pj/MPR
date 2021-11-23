@@ -1,58 +1,24 @@
 package pl.edu.pjwstk.TripEvaluator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
     private String content;
-    private String author;
-    private Integer rating;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private User author;
+    private int rating;
 
     public Review(){}
 
-    public Review(Integer id, String content, String author, Integer rating) {
+    public Review(int id, String content, User author, int rating) {
         this.id = id;
         this.content = content;
         this.author = author;
-        this.rating = rating;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public Integer getRating() {
-        return rating;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
@@ -61,8 +27,40 @@ public class Review {
         return "Review{" +
                 "id=" + id +
                 ", content='" + content + '\'' +
-                ", author='" + author + '\'' +
+                ", author=" + author +
                 ", rating=" + rating +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 }
