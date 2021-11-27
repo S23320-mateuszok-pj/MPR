@@ -1,4 +1,6 @@
-package pl.edu.pjwstk.TripEvaluator;
+package pl.edu.pjwstk.TripEvaluator.models;
+
+import pl.edu.pjwstk.TripEvaluator.models.Review;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,13 +12,13 @@ public class Trip {
     private Integer id;
     private String title;
     private String destination;
-    private double price;
+    private Double price;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Review> reviews;
 
     public Trip(){}
 
-    public Trip(Integer id, String title, String destination, double price, List<Review> reviews) {
+    public Trip(Integer id, String title, String destination, Double price, List<Review> reviews) {
         this.id = id;
         this.title = title;
         this.destination = destination;
@@ -48,11 +50,11 @@ public class Trip {
         this.destination = destination;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -74,4 +76,5 @@ public class Trip {
                 ", reviews=" + reviews +
                 '}';
     }
+
 }

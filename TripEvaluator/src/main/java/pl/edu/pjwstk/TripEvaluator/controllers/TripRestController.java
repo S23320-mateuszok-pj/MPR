@@ -1,10 +1,13 @@
-package pl.edu.pjwstk.TripEvaluator;
+package pl.edu.pjwstk.TripEvaluator.controllers;
 
+import com.sun.xml.bind.v2.TODO;
 import org.springframework.web.bind.annotation.*;
+import pl.edu.pjwstk.TripEvaluator.repository.TripRepository;
+import pl.edu.pjwstk.TripEvaluator.models.Review;
+import pl.edu.pjwstk.TripEvaluator.models.Trip;
+import pl.edu.pjwstk.TripEvaluator.service.TripService;
 
-import javax.persistence.NoResultException;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
@@ -24,7 +27,7 @@ public class TripRestController {
         return tripRepository.save(save);
     }
 
-    @PostMapping("saveReview/{id}")
+    @PostMapping("/saveReview/{id}") //TODO change @PathVariable to @RequestParam in saveReview
     public Optional<Trip> saveReview(@PathVariable Integer id , @RequestBody Review saveReview){
             return tripService.addReview(id, saveReview);
     }
@@ -43,4 +46,6 @@ public class TripRestController {
     public void delete(@PathVariable Integer id){
         tripRepository.deleteById(id);
     }
+
+    //TODO poczytać o mokito
 }

@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.TripEvaluator;
+package pl.edu.pjwstk.TripEvaluator.models;
 
 import javax.persistence.*;
 
