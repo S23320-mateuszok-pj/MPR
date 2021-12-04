@@ -51,12 +51,18 @@ public class TripServiceTest {
         tripService.minusPrice(trip);
         assertThat(trip.getPrice()).isEqualTo(0);
     }
-    //TODO Fix changeTitleToLowerCase and rest tests
+
     @Test
     void changeTitleToLowerCase(){
         Trip trip = new Trip(1,"QWERTY","null",-100.00, List.of());
         tripService.changeTitleToLowerCase(trip);
-        assertThat(trip.getTitle()).asString().containsPattern(/[^a-z]/g);
+        assertThat(trip.getTitle()).isEqualTo("qwerty");
     }
 
+//    @Test
+//    void checkTheReviewsIsEmpty(){
+//        Trip trip = new Trip(1,"QWERTY","null",-100.00, List.of());
+//
+//        tripService.emptyReviews(trip,);
+//    }
 }

@@ -6,6 +6,7 @@ import pl.edu.pjwstk.TripEvaluator.models.Trip;
 import pl.edu.pjwstk.TripEvaluator.repository.TripRepository;
 
 import javax.persistence.NoResultException;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -39,12 +40,12 @@ public class TripService {
 
     public void minusPrice(Trip trip){
         if(trip.getPrice() < 0){
-            trip.setPrice(0.0); ;
+            trip.setPrice(0.0);
         }
     }
 
-    public String changeTitleToLowerCase(Trip trip){
-        return trip.getTitle().toLowerCase();
+    public void changeTitleToLowerCase(Trip trip){
+        trip.setTitle(trip.getTitle().toLowerCase(Locale.getDefault()));
     }
 
     public void emptyReviews(Trip trip, Review review){

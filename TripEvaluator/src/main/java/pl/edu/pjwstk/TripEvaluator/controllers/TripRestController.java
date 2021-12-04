@@ -27,8 +27,8 @@ public class TripRestController {
         return tripRepository.save(save);
     }
 
-    @PostMapping("/saveReview/{id}") //TODO change @PathVariable to @RequestParam in saveReview
-    public Optional<Trip> saveReview(@PathVariable Integer id , @RequestBody Review saveReview){
+    @PostMapping("/saveReview/")
+    public Optional<Trip> saveReview(@RequestParam("id") Integer id , @RequestBody Review saveReview){
             return tripService.addReview(id, saveReview);
     }
 
